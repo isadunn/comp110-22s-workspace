@@ -1,9 +1,9 @@
 """EX01 - Chardle- A cutte step toward Wordle."""
-__author__ = 730313338 
+__author__ = "730313338"
 
 word: str = input("Enter a 5-character word: ")
 if len(word) != 5:
-    print("Word must countain 5 characters")
+    print("Error: Word must countain 5 characters")
     exit()
 single_character: str = input("Enter a single character: ")
 if len(single_character) != 1:
@@ -29,9 +29,8 @@ if word[4] == single_character:
     print(single_character + " found at index 4")
 
 if instances == 0:
-    print("No insances of " + single_character + " found in " + word)
+    print(str("No insances of " + single_character + " found in " + word))
 if instances == 1:
-    print(instances) 
-    print("instance of " + single_character + " found in " + word)
+    print(str(instances) + " instance of" + single_character + " found  " + word)
 else:
     print(str(instances) + " instances of " + single_character + " found in " + word)
