@@ -2,7 +2,7 @@
 __author__ = "730313338"
 
 
-#from exercises.ex02_one_shot_wordle import GREEN_BOX
+# from exercises.ex02_one_shot_wordle import GREEN_BOX
 
 
 def contains_char(secret: str, letter: str) -> bool:
@@ -43,7 +43,7 @@ def emojified(guess: str, secret: str) -> str:
 
 def input_guess(expected_length: int) -> str: 
     """prompts user for guess, keeps prompting until guess is right length."""
-    guess: str = input("Enter a " + str(expected_length) + " character word:")
+    guess: str = input("Enter a " + str(expected_length) + " character word: ")
     while(len(guess) != expected_length):
         guess: str = input("That wasn't " + str(expected_length) + " chars! Try again:")
     return guess
@@ -54,15 +54,18 @@ def main() -> None:
     holder: str = GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX
     secret: str = "codes"
     i: int = 1
-    while(i <= 6):
+    while(i <= len(secret)):
         print("=== Turn " + str(i) + "/6 ===")
-        guess: str = input_guess(5)
+        guess: str = input_guess(len(secret))
         result: str = emojified(secret, guess)
         print(result)
 
         if result == holder:
             print("You won in " + str(i) + "/6 turns!")
-            i = 7 
+            i = len(secret) + 1
         i += 1
     print("X/6- Sorry, try again tomorrow!")    
     
+
+if __name__ == "__main__":
+    main()    
