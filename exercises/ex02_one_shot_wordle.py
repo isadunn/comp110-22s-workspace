@@ -1,5 +1,5 @@
-"""Excersize02- one shot wordle"""
-"___730313338__" 
+"""Excersize02- one shot wordle."""
+__author__ = "730313338" 
  
 #  defining global variables:
 guess: str = input("What is your 6-letter guess?")
@@ -13,7 +13,8 @@ result: str = ""
 # checking for length
 while len(guess) != len(correct_word):
     guess: str = input("That was not" + str(len(correct_word)) + " letters! Try Again: ")   
-        
+
+# redefining guess from line 5   
 # checking indices for correct characters / positions against correct word via loop
 while i < len(correct_word):
     if guess[i] == correct_word[i]:
