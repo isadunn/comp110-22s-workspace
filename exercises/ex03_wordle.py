@@ -2,11 +2,8 @@
 __author__ = "730313338"
 
 
-# from exercises.ex02_one_shot_wordle import GREEN_BOX
-
-
 def contains_char(secret: str, letter: str) -> bool:
-    """searches for single ch guess found within secret word in loop.""" 
+    """Searches for single ch guess found within secret word in loop.""" 
     i: int = 0
     assert len(letter) == 1
     while i < len(secret):
@@ -19,7 +16,7 @@ def contains_char(secret: str, letter: str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str: 
-    """compares guess to secret word ."""
+    """Compares guess to secret word."""
     i: int = 0
     j: int = 0
     result: str = ""
@@ -42,30 +39,34 @@ def emojified(guess: str, secret: str) -> str:
 
 
 def input_guess(expected_length: int) -> str: 
-    """prompts user for guess, keeps prompting until guess is right length."""
+    """Prompts user for guess, keeps prompting until guess is right length."""
     guess: str = input("Enter a " + str(expected_length) + " character word: ")
     while(len(guess) != expected_length):
-        guess: str = input("That wasn't " + str(expected_length) + " chars! Try again:")
+        guess = input("That wasn't " + str(expected_length) + " chars! Try again:")
     return guess
 
 
 def main() -> None:
-    GREEN_BOX: str = "\U0001F7E9"
-    holder: str = GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX
+    """Brings together all varaibles to run game."""
+    # GREEN_BOX: str = "\U0001F7E9"
+    # holder: str = GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX + GREEN_BOX
     secret: str = "codes"
     i: int = 1
-    while(i <= len(secret)):
+    correct: bool = False
+    while(i <= 6):
         print("=== Turn " + str(i) + "/6 ===")
         guess: str = input_guess(len(secret))
         result: str = emojified(secret, guess)
         print(result)
-
-        if result == holder:
+        if guess == secret: 
+            correct = True
             print("You won in " + str(i) + "/6 turns!")
-            i = len(secret) + 1
-        i += 1
-    print("X/6- Sorry, try again tomorrow!")    
+            i = 7
+        else: 
+            i += 1
+    if not correct:
+        print("X/6- Sorry, try again tomorrow!")  
+          
     
-
 if __name__ == "__main__":
     main()    
