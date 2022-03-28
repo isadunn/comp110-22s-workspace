@@ -1,4 +1,4 @@
-""""EX06- Dictionaries."""
+"""EX06- Dictionaries."""
 ___author__ = "730313338"
 
 

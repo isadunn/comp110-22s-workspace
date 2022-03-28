@@ -3,6 +3,7 @@ ___author___ = "730313338"
 
 
 from dictionary import invert, favorite_color, count
+import pytest
 
 
 def test_invert() -> None:
@@ -41,19 +42,26 @@ def test_favorite_color_three() -> None:
     assert favorite_color(color_dict) == "yellow"
 
 
+def test_key_error() -> None: 
+    """Testing for key error."""
+    with pytest.raises(KeyError):
+        my_dictionary = {'kris': 'jordan', 'michael': 'jordan'}
+        invert(my_dictionary)
+
+
 def test_count() -> None:
     """Test count with an empty list."""
-    input_list: list[str] = ""
+    input_list: list[str] = []
     assert count(input_list) == {}
 
 
 def test_count_two() -> None:
     """Test count with no repeats."""
-    input_list: list[str] = "cat", "dog", "bird"
+    input_list: list[str] = ["cat", "dog", "bird"]
     assert count(input_list) == {"cat": 1, "dog": 1, "bird": 1}
 
 
 def test_count_three() -> None:
     """Test count with repeat keys."""
-    input_list: list[str] = "cat", "dog", "dog"
+    input_list: list[str] = ["cat", "dog", "dog"]
     assert count(input_list) == {"cat": 1, "dog": 2}
